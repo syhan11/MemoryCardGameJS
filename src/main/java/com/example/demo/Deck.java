@@ -46,9 +46,7 @@ public class Deck {
                 this.cards[i][j].setFacecard(imgArray[index]);
             }
         }
-    }
-
-    public int getMaxrow(){
+    }public int getMaxrow(){
         return this.maxrow;
     }
 

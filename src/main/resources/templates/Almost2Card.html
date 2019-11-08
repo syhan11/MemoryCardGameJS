@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:insert="basicfrag :: headerFrag"></div>
+    <title>MemoryCardGame</title>
+    <script>
+        function xflip(var carno) {
+            var cardname = 'card'+carno;
+            $(cardname).toggleClass('flipped');
+
+            document.getElementById("textmsg").innerText = "xflip carno="+carno;
+        }
+
+    </script>
+
+</head>
+
+<body>
+<div th:insert="basicfrag :: navFrag"></div>
+<p class="textmsg">Message</p>
+
+<div class="container">
+    <div class="row">
+        <div class="col-3" th:each="tmpcard : ${allcards}">
+            <div class="cardcontainer">
+                <div class="gamecard" th:class="'card'+${tmpcard.cardposition}" th:onclick="xflip('[[${tmpcard.cardposition}]]')">
+                    <div class="gamecardface">
+                        <img style="width: 200px; height: 250px"
+                             th:src=${tmpcard.facecard} alt="F1"/>
+                    </div>
+
+                    <div class="gamecardback">
+                        <img style="width: 200px; height: 250px"
+                             th:src=${tmpcard.backcard} alt="B1"/>
+                    </div>
+                    <p id="textmsg">Message</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:insert="basicfrag :: footerFrag"></div>
+<div th:insert="basicfrag :: scriptFrag"></div>
+</body>
+</html>

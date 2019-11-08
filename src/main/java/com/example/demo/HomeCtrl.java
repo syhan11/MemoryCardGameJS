@@ -46,23 +46,24 @@ public class HomeCtrl {
 
 
         model.addAttribute("disableflag", 0);
-        return "showcards";
+//        return "showcards";
+        return "twocards";
     }
 
     @RequestMapping("/test")
     public String test(Model model) {
         ArrayList<Card> cards;
-        Card card1, card2;
+        Card firstcard, secondcard;
 
         cards = deckofcard.shuffleCards();
 
         for (Card tmpcard : cards) {
             cardRepository.save(tmpcard);
         }
-        card1 = cardRepository.findCardByCardpositionEquals(1);
-        card2 = cardRepository.findCardByCardpositionEquals(2);
-        model.addAttribute("card1", card1);
-        model.addAttribute("card2", card2);
+        firstcard = cardRepository.findCardByCardpositionEquals(1);
+        secondcard = cardRepository.findCardByCardpositionEquals(2);
+        model.addAttribute("firstcard", firstcard);
+        model.addAttribute("card2", secondcard);
 
         return "twocards";
     }

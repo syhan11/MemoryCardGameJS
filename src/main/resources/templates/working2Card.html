@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:insert="basicfrag :: headerFrag"></div>
+    <title>MemoryCardGame</title>
+    <script>
+        // function flipCard1(srcurl) {
+        //     document.getElementById("card1").src = srcurl;
+        //     document.getElementById("msgtxt").innerText = "CARD1:" + srcurl;
+        //     $('.xcard').toggleClass('flipped');
+        // }
+        //
+        // function flipCard2(srcurl) {
+        //     document.getElementById("card2").src = srcurl;
+        //     document.getElementById("msgtxt").innerText = "CARD2:" + srcurl;
+        // }
+        //
+        // function flipCard(cardno, srcurl) {
+        //     var sz = srcurl.length - 2;
+        //     var newsrc = srcurl.substr(1, sz);
+        //
+        //     document.getElementById(cardno).src = newsrc;
+        //     document.getElementById("msgtxt").innerText = "Card=" + cardno + " srcurl=" + srcurl + " newurl=" + newsrc + " sz=" + sz;
+        // }
+
+
+        function xflip() {
+            $('.gamecard').toggleClass('flipped');
+            // document.getElementById("msgtxt").innerText = "card flipped" + document.getSelection();
+
+        }
+
+    </script>
+
+</head>
+
+<body>
+<div th:insert="basicfrag :: navFrag"></div>
+
+<div class="container">
+    <!--    <div class="row">-->
+    <!--        <div class="col-3 xcard">-->
+    <!--            <div class="flip-card-inner111" style="width:300px; height:300px">-->
+    <!--                <button class="flip-card-back111" style="width:90%; height:90%"-->
+    <!--                        th:onclick="flipCard('card1','[[${card1.facecard}]]')">-->
+    <!--                    <img alt="Back1" id="card1" style="width:90%; height:90%"-->
+    <!--                         th:src=${card1.backcard}/>-->
+    <!--                </button>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--        <div class="col-3 flip-card111">-->
+    <!--            <div class="flip-card-inner111" style="width:300px; height:300px">-->
+    <!--                <button class="flip-card-back111" style="width:90%; height:90%"-->
+    <!--                        th:onclick="flipCard('card2', '[[${card2.facecard}]]')">-->
+    <!--                    <img alt="Back2" id="card2" style="width:90%; height:90%"-->
+    <!--                         th:src=${card2.backcard}/>-->
+    <!--                </button>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--        <div class="col-3">-->
+    <!--            <p id="msgtxt"></p>-->
+    <!--        </div>-->
+    <!--    </div>-->
+
+    <div class="row">
+        <div class="col-3" th:each="tmpcard : ${allcards}">
+            <div class="cardcontainer">
+                <div class="gamecard row" onclick="xflip()">
+                    <div class="gamecardface">
+                        <img id="card1234"
+                             style="width: 200px; height: 250px"
+                             th:src="${tmpcard.facecard}" alt="F1"/>
+                    </div>
+
+                    <div class="gamecardback">
+                        <img id="card12345"
+                             style="width: 200px; height: 250px"
+                             th:src="${tmpcard.backcard}" alt="B1"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:insert="basicfrag :: footerFrag"></div>
+<div th:insert="basicfrag :: scriptFrag"></div>
+</body>
+</html>
